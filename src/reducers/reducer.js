@@ -1,7 +1,7 @@
 const initialState = {
   beer : [],
   loading : true,
-  bottleList: [],
+  bottleList: null,
   id : null
 
 };
@@ -13,17 +13,26 @@ const reducer = (state = initialState , action)=>{
               return {
                   beer : action.payload,
                   loading: false,
-
               };
 
 
-            case 'SELECTED_ITEM':{
+              case 'GET_A_BOTTLE' : {
+                console.log(action.payload)
+             return {
+
+        ...state,
+        bottleList: action.payload
+
+                  }
+            };
+
+              case 'SELECTED_ITEM':{
               const id = action.payload;
               return {
                 ...state,
                 id : id
               }
-            }
+            };
 
 
             default :

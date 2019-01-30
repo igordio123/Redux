@@ -7,7 +7,6 @@ import {Provider} from "react-redux";
 import {createStore} from 'redux'
 import reducer from './reducers/reducer'
 
-const getData = new BeerService();
  const store  = createStore(reducer);
 
 
