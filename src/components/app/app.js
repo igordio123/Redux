@@ -1,5 +1,5 @@
 import React from 'react'
-import AboutBeer from '../about-beer/item-list'
+import AboutBeer from '../about-beer/about-beer'
 import Header from '../header/header.js'
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import FullInfromation from '../full-information/full-information'
@@ -27,7 +27,7 @@ render() {
     </Router>
   )
 }
-};
+}
 const mapStateToProps = ({bottleList}) =>{
   return {bottleList:bottleList}
 
