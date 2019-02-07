@@ -1,5 +1,5 @@
 import React from 'react'
-import AboutBeer from '../about-beer/about-beer'
+import AboutBeerContainer from '../about-beerContainer/about-beerContainer'
 import Header from '../header/header.js'
 import {BrowserRouter as Router,Route} from 'react-router-dom'
 import FullInfromation from '../full-information/full-information'
@@ -16,7 +16,7 @@ render() {
     <Router>
       <div>
         <Header/>
-        <Route path='/' component={AboutBeer} exact={true}/>
+        <Route path='/' component={AboutBeerContainer} exact={true}/>
         <Route path='/:id'  render={(props) => <FullInfromation {...props}/>}/>
         <Route path='/basket/'  render={() => <Box bottleList={bottleList}/>}/>
 

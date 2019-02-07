@@ -9,7 +9,6 @@ class Box extends React.Component {
 
   render() {
     const {bottleList} = this.props;
-    console.log(bottleList);
     const newArray = bottleList.sort((first,second)=>{
       return first.id - second.id;
     }).reduce((arr, el) => {
