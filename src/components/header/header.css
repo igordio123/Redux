@@ -9,9 +9,28 @@
 ul {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    align-items: center;
 }
-ul li {
-
-    list-style-type: none;
+.left {
+    text-align:center ;
+}
+.basket img {
+    max-height: 40px;
+}
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.right-block{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    font-weight: 700;
+    font-size: 16px;
+    margin-right: 100px;
+}
+.right span{
+    display: inline-block;
+    margin-right: 40px;
 }

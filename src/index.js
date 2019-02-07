@@ -4,10 +4,15 @@ import BeerService from './services/beer-store.js';
 import {BeerServiceConsumer,BeerServiceProvider} from "./components/beer-store/beer-service-context"
 import App from './components/app/app.js'
 import {Provider} from "react-redux";
-import {createStore} from 'redux'
-import reducer from './reducers/reducer'
+import {createStore,combineReducers} from 'redux'
+import {reducer} from './reducers/reducer'
+
 
  const store  = createStore(reducer);
+
+
+
+
 
 
 ReactDOM.render(

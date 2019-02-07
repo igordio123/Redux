@@ -1,17 +1,30 @@
-
-export const newBootle = (payload) => {
-  console.log(payload);
+export const bottleRequested =()=>{
   return {
+
+    type : 'BOTTLE_REQUESTED'
+  }
+};
+export const getBottles = (payload) => {
+  return {
+
     type : 'GET_BOTTLES',
     payload
   };
 };
 export const addToBox = (payload) =>{
   return {
-    type:'GET_A_BOTTLE',
+    type:'ADD_TO_BOX',
     payload
   }
 };
+
+export const getOneBottle = (payload) =>{
+  return {
+    type:"GET_BOTTLE",
+    payload
+  }
+};
+
 
 export const selectedItem = (payload) => {
   return {
@@ -19,6 +32,15 @@ export const selectedItem = (payload) => {
     payload
   }
 };
+
+export const inc = (payload) =>{
+
+ return {
+   type:"INC",
+   payload
+ }
+
+}
 
 
 
