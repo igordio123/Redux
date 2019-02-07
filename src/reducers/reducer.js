@@ -21,7 +21,7 @@ const reducer = (state = initialState,action)=>{
     case 'GET_BOTTLES' :
       console.log(action.payload);
       return {
-
+        ...state,
         beer : action.payload,
         loading: false,
 

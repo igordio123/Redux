@@ -19,7 +19,8 @@ class Box extends React.Component {
       return arr;
     }, []);
 
-    const createRow = bottleList === undefined ? 'waiting...' : newArray.map((item) =>{
+
+    const createRow = bottleList === [] ? <h1>Wait</h1>  : newArray.map((item) =>{
 
       return  <div className='bought' key={item.id}>
         <div>1</div>

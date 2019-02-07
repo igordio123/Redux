@@ -17,8 +17,8 @@ render() {
       <div>
         <Header/>
         <Route path='/' component={AboutBeer} exact={true}/>
-        <Route path='/:id' render={(props) => <FullInfromation {...props}/>}/>
-        <Route path='/basket' render={() => <Box bottleList={bottleList}/>}/>
+        <Route path='/:id'  render={(props) => <FullInfromation {...props}/>}/>
+        <Route path='/basket/'  render={() => <Box bottleList={bottleList}/>}/>
 
 
       </div>

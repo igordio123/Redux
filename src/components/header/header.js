@@ -14,7 +14,7 @@ const Header = ({counter}) =>{
         <div className='col-md-8 right'>
 
             <div className="right-block">
-              <Link to='/basket'> <span className='basket'><img src="https://cdn0.iconfinder.com/data/icons/ecommerce-23/46/card-512.png" alt=""/> </span></Link>
+              <Link to='/basket/'> <span className='basket'><img src="https://cdn0.iconfinder.com/data/icons/ecommerce-23/46/card-512.png" alt=""/> </span></Link>
           <div>Товаров:{counter}<br/>На сумму : </div>
             </div>
 
