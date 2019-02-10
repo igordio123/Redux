@@ -15,37 +15,69 @@ class  AboutBeerContainer extends React.Component {
 
 
   componentDidMount() {
+    const {getBottle,bottleRequested,page} = this.props;
 
-
-    const {getBottle} = this.props;
-    getAllBootles().then(res => {
-      getBottle(res)
+    bottleRequested();
+    getAllBootles(5).then(res => {
+      getBottle(res);
+      console.log(res)
+    }).catch(err=>{
+      console.log(err)
     });
 
 
   }
 
+  componentDidUpdate(prevProps){
+    const {getBottle,bottleRequested,page} = this.props;
+
+    if(this.props.page !== prevProps.page){
+      bottleRequested();
+      getAllBootles(this.props.page)
+        .then(res=>{
+          getBottle(res)
+        })
+
+    }
+
+  }
   addToList = (id) => {
 
-    const {itemSelected, addToBox, inc} = this.props;
+    const {itemSelected, addToBox} = this.props;
 
     itemSelected(id);
-    inc();
     getBottle(id).then(res => {
       addToBox(res);
-      console.log(res)
-    })
+
+    });
+
+
+  };
+  pluspage = () =>{
+    const{pagePlus} = this.props;
+    pagePlus();
+
+  };
+  pageMinus = () =>{
+    const{pageMinus} = this.props;
+    pageMinus()
 
   };
 
+
   render() {
 
-    const {beer, loading} = this.props;
+    const {beer, loading,bottleList,page} = this.props;
+    if(page === 0) {
+      return;
+    }
+
     const showLi = loading ? <Spinner/> : beer.map(item => {
       return <CreateItem item={item} addToList={this.addToList}/>
     });
 
-    return (<AboutBeer showLi={showLi}/>)
+
+    return (<AboutBeer showLi={showLi} plusPage = {this.pluspage} pageMinus = {this.pageMinus}/>)
 
 
   }
@@ -60,13 +92,15 @@ class  AboutBeerContainer extends React.Component {
 
 
 
-    const {getBottles,addToBox,selectedItem,inc,bottleRequested} = actions;
+    const {getBottles,addToBox,selectedItem,pagePlus,bottleRequested,pageMinus} = actions;
 console.log(actions);
-const mapStateToProps = ({beer,loading,id}) => {
+const mapStateToProps = ({beer,loading,id,bottleList,page}) => {
   return{
     beer,
     loading,
     id,
+    bottleList,
+    page
   }
 };
 const mapDispatchToProps = (dispatch) => {
@@ -85,8 +119,11 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(selectedItem(payload))
     },
 
-    inc : () =>{
-      dispatch(inc())
+    pagePlus : () =>{
+      dispatch(pagePlus())
+    },
+    pageMinus : () =>{
+      dispatch(pageMinus())
     }
 
   }

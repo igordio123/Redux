@@ -6,7 +6,6 @@ export const bottleRequested =()=>{
 };
 export const getBottles = (payload) => {
   return {
-
     type : 'GET_BOTTLES',
     payload
   };
@@ -17,6 +16,8 @@ export const addToBox = (payload) =>{
     payload
   }
 };
+
+
 
 export const getOneBottle = (payload) =>{
   return {
@@ -32,15 +33,29 @@ export const selectedItem = (payload) => {
     payload
   }
 };
+export const deleteItem = (payload)=>{
+  return {
 
-export const inc = (payload) =>{
+    type : 'DELETED_ITED',
+    payload
+  }
+}
+
+export const pagePlus = () =>{
 
  return {
-   type:"INC",
-   payload
+   type:"PAGE_PLUS",
  }
 
-}
+};
+
+export const pageMinus = () =>{
+
+  return {
+    type:"PAGE_MINUS",
+  }
+
+};
 
 
 

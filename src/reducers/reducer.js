@@ -4,7 +4,7 @@ const initialState = {
   bottleList: [],
   full : [],
   id : null,
-  counter : 0,
+  page : 1
 
 
 };
@@ -14,8 +14,14 @@ const reducer = (state = initialState,action)=>{
   switch(action.type) {
     case 'BOTTLE_REQUESTED':{
       return {
-        beer:state.beer,
+        ...state,
         loading : true
+      }
+    }
+    case 'DELETED_ITEM':{
+      return {
+        ...state,
+
       }
     }
     case 'GET_BOTTLES' :
@@ -32,8 +38,15 @@ const reducer = (state = initialState,action)=>{
 
       return {
         ...state,
-        bottleList: [...state.bottleList , action.payload],
-      };
+        bottleList: [...state.bottleList, action.payload].sort((first, second) => {
+          return first.id - second.id;
+        }).reduce((arr, el) => {
+          if (!arr.length || arr.length && arr[arr.length - 1].id !== el.id) {
+            arr.push(el);
+          }
+          return arr;
+        }, [])
+    }
     }
 
     case 'GET_BOTTLE': {
@@ -53,12 +66,27 @@ const reducer = (state = initialState,action)=>{
         id : action.payload
       };
 
-    case "INC" :
-      state.counter++;
+    case "PAGE_PLUS" :
+
+
+
       return {
+
         ...state,
+        page:state.page + 1
 
       };
+    case "PAGE_MINUS" :
+
+
+
+      return {
+
+        ...state,
+        page:state.page - 1
+
+      };
+
 
 
     default :

@@ -1,3 +1,7 @@
-img {
-    height:450px;
+.img-thumbnail {
+    max-height: 450px;
+    float: left;
+}
+.wrapper {
+    margin-top: 50px;
 }

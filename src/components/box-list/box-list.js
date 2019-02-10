@@ -1,5 +1,7 @@
 import React from 'react'
 import './box-list.css'
+import {connect} from 'react-redux'
+
 
 
 
@@ -7,19 +9,18 @@ class Box extends React.Component {
 
 
 
+
+
+
+
   render() {
+    console.log(this.props);
     const {bottleList} = this.props;
-    const newArray = bottleList.sort((first,second)=>{
-      return first.id - second.id;
-    }).reduce((arr, el) => {
-      if(!arr.length || arr.length && arr[arr.length - 1].id !== el.id) {
-        arr.push(el);
-      }
-      return arr;
-    }, []);
 
 
-    const createRow = bottleList === [] ? <h1>Wait</h1>  : newArray.map((item) =>{
+
+
+    const createRow = bottleList === [] ? <h1>Wait</h1>  : bottleList.map((item) =>{
 
       return  <div className='bought' key={item.id}>
         <div>1</div>
@@ -27,7 +28,7 @@ class Box extends React.Component {
         <div>1</div>
         <div>
           <span className='alert alert-success'>ADD</span>
-          <span className='alert alert-danger'>REMOVE</span>
+          <button className='alert alert-danger' >REMOVE</button>
 
         </div>
       </div>
@@ -53,6 +54,7 @@ class Box extends React.Component {
 
 
 
-export default Box
+
+export default Box;
 
 
