@@ -8,13 +8,17 @@ const AboutBeer = (props) => {
  const {showLi,plusPage,pageMinus} = props;
 
   return (
-    <div className=' container wrapp'>
+
+
+      <div className="col-md-9 wrapp">
       <div className='row goods'>
         {showLi}
       </div>
-      <button className='btn btn-primary' onClick={()=>plusPage()}>rigth</button>
       <button className='btn btn-primary' onClick={()=>pageMinus()}>left</button>
+      <button className='btn btn-primary' onClick={()=>plusPage()}>rigth</button>
     </div>
+
+
   )
 };
 

@@ -10,14 +10,11 @@ const CreateItem = ({item,addToList}) =>{
     <div className="card"  key={id}>
     <img className='card-img-top' src={`${image_url}`}  alt=""/>
     <div className='card-body'>
-      <h5 className="card-title">{name}</h5>
+      <Link to={`/${id}`}><h5 className="card-title">{name}</h5></Link>
       <p className="card-text">
         {description.substring(0,60)}
 
-        <Link to={`/${id}`}><span
-        onClick={()=>{
-
-      }}>...</span></Link></p>
+        <span>...</span></p>
       <span className="btn btn-primary" onClick={(event)=>{  event.preventDefault(); addToList(id)}}>Buy</span>
 
     </div>

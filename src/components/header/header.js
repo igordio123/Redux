@@ -4,9 +4,9 @@ import './header.css'
 import {Link} from 'react-router-dom'
 
 const Header = ({counter,bottleList}) =>{
-  console.log(counter,bottleList.length);
+
   return (
-    <div className='container-fluid'>
+    <div className='container-fluid top'>
       <div className='row header'>
         <div className='col-md-4 left'>
           <Link to='/'> <h1>About beer!</h1></Link>

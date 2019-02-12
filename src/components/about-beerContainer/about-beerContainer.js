@@ -6,6 +6,8 @@ import Spinner from '../spinner/spinner'
 import CreateItem from '../create-item/create-item.js'
 import {withRouter} from "react-router-dom";
 import AboutBeer from '../about-beer/about-beer'
+import SideBar from '../sideBar/sideBar.js'
+import './about-beerContainer.css'
 
 
 
@@ -15,12 +17,11 @@ class  AboutBeerContainer extends React.Component {
 
 
   componentDidMount() {
-    const {getBottle,bottleRequested,page} = this.props;
+    const {getBottle,bottleRequested} = this.props;
 
     bottleRequested();
     getAllBootles(5).then(res => {
       getBottle(res);
-      console.log(res)
     }).catch(err=>{
       console.log(err)
     });
@@ -29,7 +30,7 @@ class  AboutBeerContainer extends React.Component {
   }
 
   componentDidUpdate(prevProps){
-    const {getBottle,bottleRequested,page} = this.props;
+    const {getBottle,bottleRequested} = this.props;
 
     if(this.props.page !== prevProps.page){
       bottleRequested();
@@ -42,7 +43,6 @@ class  AboutBeerContainer extends React.Component {
 
   }
   addToList = (id) => {
-
     const {itemSelected, addToBox} = this.props;
 
     itemSelected(id);
@@ -53,13 +53,23 @@ class  AboutBeerContainer extends React.Component {
 
 
   };
+  handleChange =(e) => {
+      const {changeValue} = this.props;
+      const value = e.target.value;
+      changeValue(value)
+
+  };
   pluspage = () =>{
     const{pagePlus} = this.props;
     pagePlus();
 
   };
   pageMinus = () =>{
-    const{pageMinus} = this.props;
+    console.log(this.props)
+    const{pageMinus,page} = this.props;
+    if(page === 1){
+      return
+    }
     pageMinus()
 
   };
@@ -67,17 +77,25 @@ class  AboutBeerContainer extends React.Component {
 
   render() {
 
-    const {beer, loading,bottleList,page} = this.props;
-    if(page === 0) {
-      return;
-    }
+    const {beer, loading,value} = this.props;
+    console.log(value);
 
-    const showLi = loading ? <Spinner/> : beer.map(item => {
+    const showLi = loading ? <Spinner/> : beer.filter(item=>{
+      return item.name.toLowerCase().indexOf(value.toLowerCase()) > -1
+    }).map(item => {
       return <CreateItem item={item} addToList={this.addToList}/>
     });
 
 
-    return (<AboutBeer showLi={showLi} plusPage = {this.pluspage} pageMinus = {this.pageMinus}/>)
+    return (
+      <div className='container-fluid '>
+        <div className='row'>
+        <SideBar handleChange={this.handleChange}/>
+        <AboutBeer showLi={showLi} plusPage = {this.pluspage} pageMinus = {this.pageMinus}/>
+        </div>
+      </div>
+
+    )
 
 
   }
@@ -86,21 +104,30 @@ class  AboutBeerContainer extends React.Component {
 }
 
 
+const HoC = () =>{
+  return class extends React.Component{
+
+    render(){
+        return AboutBeerContainer
+    }
+  }
+};
 
 
 
 
 
 
-    const {getBottles,addToBox,selectedItem,pagePlus,bottleRequested,pageMinus} = actions;
+    const {getBottles,addToBox,selectedItem,pagePlus,bottleRequested,pageMinus,changeValue} = actions;
 console.log(actions);
-const mapStateToProps = ({beer,loading,id,bottleList,page}) => {
+const mapStateToProps = ({beer,loading,id,bottleList,page,value}) => {
   return{
     beer,
     loading,
     id,
     bottleList,
-    page
+    page,
+    value
   }
 };
 const mapDispatchToProps = (dispatch) => {
@@ -124,7 +151,11 @@ const mapDispatchToProps = (dispatch) => {
     },
     pageMinus : () =>{
       dispatch(pageMinus())
+    },
+    changeValue : (payload) =>{
+      dispatch(changeValue(payload))
     }
+
 
   }
 

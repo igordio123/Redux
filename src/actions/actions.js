@@ -35,7 +35,6 @@ export const selectedItem = (payload) => {
 };
 export const deleteItem = (payload)=>{
   return {
-
     type : 'DELETED_ITED',
     payload
   }
@@ -48,6 +47,12 @@ export const pagePlus = () =>{
  }
 
 };
+export const changeValue = (payload) =>{
+  return {
+    type: "CHANGE_VALUE",
+    payload
+  }
+}
 
 export const pageMinus = () =>{
 

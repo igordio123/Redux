@@ -4,7 +4,8 @@ const initialState = {
   bottleList: [],
   full : [],
   id : null,
-  page : 1
+  page : 1,
+  value:''
 
 
 };
@@ -77,15 +78,19 @@ const reducer = (state = initialState,action)=>{
 
       };
     case "PAGE_MINUS" :
-
-
-
       return {
 
         ...state,
         page:state.page - 1
 
       };
+
+    case "CHANGE_VALUE" : {
+      return{
+        ...state,
+        value : action.payload
+      }
+    }
 
 
 
