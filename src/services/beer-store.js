@@ -15,7 +15,7 @@ class BeerService extends React.Component {
 
     return await onBootle[0];
 };
-  getAllBootles = async (num) => {
+  getAllBottles = async (num) => {
     return await this.getData(`https://api.punkapi.com/v2/beers?page=${num}&per_page=10`);
 
   };

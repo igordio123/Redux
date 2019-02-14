@@ -7,11 +7,12 @@ import Box from "../box-list/box-list";
 import {connect} from 'react-redux'
 
 
+
 class App extends React.Component{
 
 render() {
   const {bottleList} = this.props;
-
+console.log(AboutBeerContainer)
   return (
     <Router>
       <div>
