@@ -1,5 +1,6 @@
 .top{
-  background: dodgerblue;
+  background: #384c5f;
+    color:white
 }
 .header {
     display: flex;
@@ -13,6 +14,9 @@ ul {
 }
 .left {
     text-align:center ;
+}
+.left img{
+    max-width: 100px;
 }
 .basket img {
     max-height: 40px;

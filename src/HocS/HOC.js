@@ -22,7 +22,6 @@ const HoC = (View,getData) =>{
 
 
     }
-
     componentDidUpdate(prevProps){
       const {getBottle,bottleRequested} = this.props;
 
@@ -67,6 +66,9 @@ const HoC = (View,getData) =>{
       pageMinus()
 
     };
+
+
+
     render(){
 
       const {beer, loading,value} = this.props;

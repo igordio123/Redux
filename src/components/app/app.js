@@ -12,14 +12,15 @@ class App extends React.Component{
 
 render() {
   const {bottleList} = this.props;
-console.log(AboutBeerContainer)
+
   return (
     <Router>
       <div>
         <Header/>
-        <Route path='/' component={AboutBeerContainer} exact={true}/>
-        <Route path='/:id'  render={(props) => <FullInfromation {...props} exact={true}/>}/>
-        <Route path='/basket/'  render={() => <Box bottleList={bottleList}/>}/>
+        <Route path='/' component={AboutBeerContainer} exact={true} />
+        <Route path='/basket/trash' exact={true} render={() => <Box bottleList={bottleList}/>}/>
+        <Route path='/:id' exact={true} render={(props) => <FullInfromation {...props} />}/>
+
 
 
       </div>

@@ -14,8 +14,14 @@ const AboutBeer = (props) => {
       <div className='row goods'>
         {showLi}
       </div>
-      <button className='btn btn-primary' onClick={()=>pageMinus()}>left</button>
+        <div className='buttons'>
+          <div className='first'>
+      <button className='btn btn-primary ' onClick={()=>pageMinus()}>left</button>
+          </div>
+          <div className='second'>
       <button className='btn btn-primary' onClick={()=>plusPage()}>rigth</button>
+          </div>
+        </div>
     </div>
 
 

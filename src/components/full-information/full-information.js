@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import BeerService from "../../services/beer-store";
-import {getOneBottle} from '../../actions/actions.js'
+import {getOneBottle,addToBox} from '../../actions/actions.js'
 import Spinner from '../spinner/spinner'
 import FullInformationItem from '../full-information-item/full-information-item'
 
@@ -27,11 +27,19 @@ class FullInformation extends React.Component {
 
   };
 
+  addToBox=(id)=>{
+    const { addToBox} = this.props;
+
+
+    addToBox(id);
+
+
+  }
 
   render () {
-    const {bottle} = this.props;
+    const {bottle,addToBox} = this.props;
 
-    const show = !bottle  ?  <Spinner/> : <FullInformationItem bottle = {bottle}/>;
+    const show = !bottle  ?  <Spinner/> : <FullInformationItem bottle = {bottle} addTobox = {this.addToBox}/>;
 
     return (
         <div className='container'>
@@ -67,7 +75,11 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getOneBottle : (res) =>{
       dispatch(getOneBottle(res))
+    },
+    addToBox : (payload) =>{
+      dispatch(addToBox(payload))
     }
+
   }
 };
 

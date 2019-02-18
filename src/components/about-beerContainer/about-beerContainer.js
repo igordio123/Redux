@@ -65,10 +65,10 @@ const HoC = (View,getData) =>{
       const {itemSelected, addToBox} = this.props;
 
       itemSelected(id);
-      getBottle(id).then(res => {
-        addToBox(res);
 
-      });
+        addToBox(id);
+
+
 
 
     };

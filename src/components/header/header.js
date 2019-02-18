@@ -9,12 +9,12 @@ const Header = ({counter,bottleList}) =>{
     <div className='container-fluid top'>
       <div className='row header'>
         <div className='col-md-4 left'>
-          <Link to='/'> <h1>About beer!</h1></Link>
+          <Link to='/'> <img src="https://woodman-bar.ru/images/logo.png" alt=""/></Link>
         </div>
         <div className='col-md-8 right'>
 
             <div className="right-block">
-              <Link to='/basket/'> <span className='basket'><img src="https://cdn0.iconfinder.com/data/icons/ecommerce-23/46/card-512.png" alt=""/> </span></Link>
+              <Link to='/basket/trash'> <span className='basket'><img src="https://cdn0.iconfinder.com/data/icons/ecommerce-23/46/card-512.png" alt=""/> </span></Link>
           <div>Товаров:{bottleList.length}<br/>На сумму : </div>
             </div>
 

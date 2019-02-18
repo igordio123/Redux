@@ -38,7 +38,27 @@ export const deleteItem = (payload)=>{
     type : 'DELETED_ITED',
     payload
   }
+};
+
+export const removeFromTrash = (payload) =>{
+  return {
+    type:"REMOVE_FROM_TRASH",
+    payload
+  }
+};
+
+export const addOneMore = (payload) =>{
+  return {
+    type:'ADD_ONE_MORE',
+    payload
+  }
 }
+export const addItem = () =>{
+  return {
+    type : "ADD_ITEM"
+  }
+};
+
 
 export const pagePlus = () =>{
 

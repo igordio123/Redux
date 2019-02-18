@@ -10,7 +10,7 @@ const CreateItem = ({item,addToList}) =>{
     <div className="card"  key={id}>
     <img className='card-img-top' src={`${image_url}`}  alt=""/>
     <div className='card-body'>
-      <Link to={`/${id}`}><h5 className="card-title">{name}</h5></Link>
+      <Link to={`/${id}/`}><h5 className="card-title">{name}</h5></Link>
       <p className="card-text">
         {description.substring(0,60)}
 
